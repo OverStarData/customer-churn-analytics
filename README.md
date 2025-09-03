@@ -61,7 +61,9 @@ Screenshots
 🤖 ML Models
 
 Logistic Regression
+
 Random Forest (Tuned)
+
 Gradient Boosting
 
 👨‍💻 Author
