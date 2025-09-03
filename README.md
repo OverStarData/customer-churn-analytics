@@ -72,4 +72,4 @@ Gradient Boosting
 
 ## 👨‍💻 Author
 **[Mahmoud Kamal](https://github.com/OverStarData)**  
-🌐 [GitHub](https://github.com/OverStarData) | 💼 [LinkedIn](https://www.linkedin.com/in/mahmoud-kamal-14208136b/)
+ [GitHub](https://github.com/OverStarData) |  [LinkedIn](https://www.linkedin.com/in/mahmoud-kamal-14208136b/)
