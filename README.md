@@ -19,15 +19,14 @@ screenshots/ # App & dashboard previews
 
 
 ## ⚙️ Installation
-```bash
+bash
 git clone https://github.com/<your-username>/churn-prediction-dashboard.git
 cd churn-prediction-dashboard
 pip install -r requirements.txt
 python app.py
 📸 Screenshots
-| Dashboard Preview                      | Tableau Insights                                         |
-| -------------------------------------- | -------------------------------------------------------- |
-| ![](screenshots/Flash_Dashboard/1.jpg) | ![](screenshots/Tableau_Dashboard/Customer_Churn_01.jpg) |
+| Dashboard Preview                      | Tableau Insights                                        
+ ![](screenshots/Tableau_Dashboard/ChrunRateByGender.jpg) | ![number_one](screenshots/Tableau_Dashboard/Customer_Churn_01.jpg) |
 📊 ML Models
 
 Logistic Regression
