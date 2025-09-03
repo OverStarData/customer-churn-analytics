@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Churn Prediction</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">ChurnPredict</h1>
+
+    <!-- Mobile toggle button -->
+    <button class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/dataset" >Explore Data</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h2>🔮 Customer Churn Prediction</h2>
+        <p>
+          Enter customer details to predict whether they are likely to churn.
+          This tool helps businesses improve retention strategies and reduce
+          customer loss.
+        </p>
+        <a href="#form-section" class="cta-btn">Get Started</a>
+      </div>
+    </header>
+
+    <!-- Form Section -->
+    <main class="main-section" id="form-section">
+      <h3>Enter Customer Details</h3>
+      <form method="POST" action="/predict" class="form-grid">
+        <!-- Gender -->
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <!-- Senior Citizen -->
+        <div class="form-group">
+          <label>Senior Citizen:</label>
+          <select name="SeniorCitizen">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+
+        <!-- Partner -->
+        <div class="form-group">
+          <label>Partner:</label>
+          <select name="Partner">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Dependents -->
+        <div class="form-group">
+          <label>Dependents:</label>
+          <select name="Dependents">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Tenure -->
+        <div class="form-group">
+          <label>Tenure (months):</label>
+          <input type="number" step="1" name="tenure" required />
+        </div>
+
+        <!-- Phone Service -->
+        <div class="form-group">
+          <label>Phone Service:</label>
+          <select name="PhoneService">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Multiple Lines -->
+        <div class="form-group">
+          <label>Multiple Lines:</label>
+          <select name="MultipleLines">
+            <option value="No phone service">No phone service</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Internet Service -->
+        <div class="form-group">
+          <label>Internet Service:</label>
+          <select name="InternetService">
+            <option value="DSL">DSL</option>
+            <option value="Fiber optic">Fiber optic</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Online Security -->
+        <div class="form-group">
+          <label>Online Security:</label>
+          <select name="OnlineSecurity">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Online Backup -->
+        <div class="form-group">
+          <label>Online Backup:</label>
+          <select name="OnlineBackup">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Device Protection -->
+        <div class="form-group">
+          <label>Device Protection:</label>
+          <select name="DeviceProtection">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Tech Support -->
+        <div class="form-group">
+          <label>Tech Support:</label>
+          <select name="TechSupport">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Streaming TV -->
+        <div class="form-group">
+          <label>Streaming TV:</label>
+          <select name="StreamingTV">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Streaming Movies -->
+        <div class="form-group">
+          <label>Streaming Movies:</label>
+          <select name="StreamingMovies">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="No internet service">No internet service</option>
+          </select>
+        </div>
+
+        <!-- Contract -->
+        <div class="form-group">
+          <label>Contract:</label>
+          <select name="Contract">
+            <option value="Month-to-month">Month-to-month</option>
+            <option value="One year">One year</option>
+            <option value="Two year">Two year</option>
+          </select>
+        </div>
+
+        <!-- Paperless Billing -->
+        <div class="form-group">
+          <label>Paperless Billing:</label>
+          <select name="PaperlessBilling">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-group">
+          <label>Payment Method:</label>
+          <select name="PaymentMethod">
+            <option value="Electronic check">Electronic check</option>
+            <option value="Mailed check">Mailed check</option>
+            <option value="Bank transfer (automatic)">
+              Bank transfer (automatic)
+            </option>
+            <option value="Credit card (automatic)">
+              Credit card (automatic)
+            </option>
+          </select>
+        </div>
+
+        <!-- Monthly Charges -->
+        <div class="form-group">
+          <label>Monthly Charges:</label>
+          <input type="number" step="1" name="MonthlyCharges" required />
+        </div>
+
+        <!-- Total Charges -->
+        <div class="form-group">
+          <label>Total Charges:</label>
+          <input type="number" step="1" name="TotalCharges" required />
+        </div>
+        <div class="full-width">
+          <!-- Error Message -->
+          {% if error %}
+          <div id="error-section" class="alert alert-danger error-message">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+          </div>
+          {% endif %}
+        </div>
+        <!-- Button -->
+        <div class="full-width">
+          <button type="submit" class="predict-btn">🔍 Predict Churn</button>
+        </div>
+
+        <!-- Error Message -->
+      </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Mahmoud Kamal | Built with ❤️ and Data</p>
+      <div class="socials">
+        <a href="https://github.com/OverStarData" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/mahmoud-kamal-14208136b/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const errorSection = document.getElementById("error-section");
+    if (errorSection) {
+        // Smooth scroll to the error
+        errorSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+});
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  });
+
+    </script>
+  </body>
+</html>

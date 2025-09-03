@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dataset Explorer — Advanced</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dataset.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">ChurnPredict</h1>
+
+    <!-- Hamburger Menu -->
+    <button class="menu-toggle d-lg-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/dataset" class="active">Explore Data</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container my-4">
+      <h1>📊 Dataset Dashboard</h1>
+
+      <!-- Summary -->
+      <div class="row text-center mb-4">
+        <div class="col">
+          <div class="card p-3">
+            <small>Rows</small>
+            <h4>{{ n_rows }}</h4>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card p-3">
+            <small>Columns</small>
+            <h4>{{ n_cols }}</h4>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card p-3">
+            <small>Missing</small>
+            <h4>{{ n_missing }}</h4>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card p-3">
+            <small>Duplicates</small>
+            <h4>{{ n_duplicates }}</h4>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card p-3">
+            <small>Churn Rate</small>
+            <h4>{{ churn_rate }}%</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profiling -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5>Column Profiling</h5>
+          <div class="table-responsive">
+            <table
+              id="profileTable"
+              class="table table-striped table-bordered dt-responsive nowrap"
+              style="width: 100%; min-width: 0"
+            >
+              <thead>
+                <tr>
+                  <th>Column</th>
+                  <th>Type</th>
+                  <th>Unique</th>
+                  <th>Missing</th>
+                  <th>Top Value</th>
+                  <th>Mean</th>
+                  <th>Std</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for col in profiling %}
+                <tr>
+                  <td>{{ col['column'] }}</td>
+                  <td>{{ col['dtype'] }}</td>
+                  <td>{{ col['unique'] }}</td>
+                  <td>{{ col['missing'] }}</td>
+                  <td>{{ col['top_value'] }}</td>
+                  <td>{{ col['mean'] }}</td>
+                  <td>{{ col['std'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Charts -->
+      <div class="row mb-4">
+        <div class="col-lg-6 mb-3">
+          <div class="card p-3">
+            <h5>Feature Importance</h5>
+            <div class="chart-container">
+              <canvas id="fiChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="card p-3">
+            <h5>Correlation Heatmap</h5>
+            {% if correlation_image %}
+            <div class="heatmap-container">
+              <img src="{{ correlation_image }}" class="img-fluid" />
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5>Sample Data</h5>
+          <div class="table-responsive">
+            <table
+              id="sample-table"
+              class="display nowrap table table-striped"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  {% for col in sample_columns %}
+                  <th>{{ col }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in sample_data %}
+                <tr>
+                  {% for col in sample_columns %}
+                  <td>{{ row[col] }}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Tableau -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Tableau Dashboards</h5>
+          <div class="tableau-gallery">
+            {% for img in tableau_images %}
+            <div class="tableau-card">
+              <img
+                src="{{ img }}"
+                alt="Tableau Dashboard"
+                loading="lazy"
+                class="preview-img"
+              />
+              <div class="tableau-caption">Dashboard {{ loop.index }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div
+        class="modal fade"
+        id="lightboxModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content bg-dark position-relative">
+            <!-- Close Button -->
+            <button
+              type="button"
+              class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+
+            <!-- Prev/Next Buttons -->
+            <button
+              type="button"
+              class="lightbox-nav prev-btn position-absolute top-50 start-0 translate-middle-y btn btn-dark text-white px-3 py-2"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="lightbox-nav next-btn position-absolute top-50 end-0 translate-middle-y btn btn-dark text-white px-3 py-2"
+            >
+              ›
+            </button>
+
+            <div class="modal-body text-center p-0">
+              <img
+                id="lightboxImage"
+                class="lightbox-img"
+                src=""
+                alt="Preview"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Mahmoud Kamal | Built with ❤️ and Data</p>
+      <div class="socials">
+        <a href="https://github.com/OverStarData" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/mahmoud-kamal-14208136b/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+  const featureImportance = JSON.parse(
+    `{{ feature_importance | tojson | safe }}`
+  );
+
+  // ✅ Initialize DataTables only once
+  $(document).ready(function () {
+    $("#profileTable").DataTable({
+      responsive: true,
+      scrollX: false,
+      pageLength: 10,
+      lengthChange: false,
+    });
+
+    $("#sample-table").DataTable({
+      responsive: true,
+      scrollX: true, // still scrollable if too wide
+      pageLength: 10,
+    });
+  });
+
+  // ✅ Feature Importance Chart
+  const fiLabels = featureImportance.map((x) => x.feature).slice(0, 10);
+  const fiValues = featureImportance.map((x) => x.importance).slice(0, 10);
+
+  new Chart(document.getElementById("fiChart"), {
+    type: "bar",
+    data: {
+      labels: fiLabels,
+      datasets: [
+        {
+          data: fiValues,
+          backgroundColor: "rgba(54, 162, 235, 0.7)",
+        },
+      ],
+    },
+    options: { indexAxis: "y" },
+  });
+
+  // ✅ Lightbox Gallery
+  document.addEventListener("DOMContentLoaded", () => {
+    const previewImgs = document.querySelectorAll(".preview-img");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const modalEl = document.getElementById("lightboxModal");
+    const bsModal = new bootstrap.Modal(modalEl);
+    let currentIndex = 0;
+
+    const images = Array.from(previewImgs).map((img) => img.src);
+
+    function showImage(index) {
+      currentIndex = index;
+      lightboxImage.src = images[currentIndex];
+    }
+
+    previewImgs.forEach((img, idx) => {
+      img.addEventListener("click", () => {
+        showImage(idx);
+        bsModal.show();
+      });
+    });
+
+    const prevBtn = modalEl.querySelector(".prev-btn");
+    const nextBtn = modalEl.querySelector(".next-btn");
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!modalEl.classList.contains("show")) return;
+      if (e.key === "ArrowLeft") prevBtn.click();
+      if (e.key === "ArrowRight") nextBtn.click();
+      if (e.key === "Escape") bsModal.hide();
+    });
+  });
+
+  // ✅ Mobile Menu Toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>
+
+  </body>
+</html>

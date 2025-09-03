@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Churn Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='predict.css') }}"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">ChurnPredict</h1>
+
+        <!-- Mobile toggle button -->
+        <button class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="/" class="">Home</a></li>
+          <li><a href="/dataset">Explore Data</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <div class="result-card">
+        {% if prediction %}
+        <h3>
+          Prediction:
+          <span
+            class="prediction-{{ 'yes' if prediction == 'Churn' else 'no' }}"
+          >
+            {{ prediction }}
+          </span>
+        </h3>
+        <p>Probability of Churn: {{ probability }}</p>
+        {% endif %} {% if error %}
+        <p class="error-message">Error: {{ error }}</p>
+        {% endif %}
+
+        <div class="back-btn-container">
+          <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Go Back
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>

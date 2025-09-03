@@ -1,0 +1,337 @@
+/* ---------------- GLOBAL ---------------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Utility Colors */
+:root {
+  --primary: #2196f3;
+  --primary-dark: #1769aa;
+  --danger: #ff4c4c;
+  --success: #4caf50;
+  --dark: #2c3e50;
+  --light: #ffffff;
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  background: var(--dark);
+  padding: 15px 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--light);
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+}
+/* Toggle (Hamburger) Button */
+.menu-toggle {
+  display: none; /* hidden by default */
+  font-size: 26px;
+  color: var(--light);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* show hamburger */
+    z-index: 1100;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;              /* just below navbar */
+    right: 20px;
+    background: var(--dark);
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;          /* hidden by default */
+    width: 200px;
+  }
+
+  .nav-links.show {
+    display: flex;          /* show when toggled */
+  }
+}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero-content h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--success);
+  color: var(--light);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn:hover {
+  background: #3e8e41;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------- MAIN FORM SECTION ---------------- */
+.main-section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h3 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 28px;
+  margin-bottom: 35px;
+}
+
+form.form-grid {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 35px;
+  background: var(--light);
+  border-radius: 14px;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 30px;
+  animation: fadeIn 0.8s ease;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 14px;
+}
+
+input,
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(33, 150, 243, 0.3);
+  outline: none;
+}
+
+.predict-btn {
+  grid-column: 1 / -1;
+  padding: 16px;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.predict-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(33, 150, 243, 0.3);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.error-message {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f8d7da;
+  color: #842029;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.footer .socials a {
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer .socials a:hover {
+  color: #3498db;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .nav-links.show {
+    max-height: 300px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+}
+
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  form.form-grid {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+
+  .hero-content h2 {
+    font-size: 34px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    padding: 60px 15px;
+  }
+  .hero-content h2 {
+    font-size: 26px;
+  }
+  .hero-content p {
+    font-size: 15px;
+  }
+  .cta-btn {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
