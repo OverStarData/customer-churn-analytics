@@ -59,6 +59,7 @@ Screenshots
 | ![](screenshots/Tableau_Dashboard/Customer_Churn_04.jpg) | ![](screenshots/Tableau_Dashboard/Customer_Churn_05.jpg) | ![](screenshots/Tableau_Dashboard/Customer_Churn_06.jpg) |
 
 🤖 ML Models
+-------------
 
 Logistic Regression
 
@@ -67,6 +68,7 @@ Random Forest (Tuned)
 Gradient Boosting
 
 👨‍💻 Author
+---------
 
 Mahmoud Kamal
 
