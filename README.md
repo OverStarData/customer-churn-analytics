@@ -61,16 +61,14 @@ Screenshots
 🤖 ML Models
 -------------
 
+
 Logistic Regression
 
 Random Forest (Tuned)
 
 Gradient Boosting
 
-👨‍💻 Author
----------
 
-Mahmoud Kamal
 
 ## 👨‍💻 Author
 **[Mahmoud Kamal](https://github.com/OverStarData)**  
