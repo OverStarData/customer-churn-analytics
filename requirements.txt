@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 Flask
 gunicorn
 numpy
 python = "^3.11"   # or ^3.12
 flask = "3.0.3"
 pandas = "2.2.2"
+=======
+Flask==3.0.3
+gunicorn
+numpy>=2.1
+pandas>=2.2.3
+>>>>>>> 164b9f991110a914acc029a0615f2fd8a5f5a095
 matplotlib
 seaborn
 scikit-learn
 joblib
+<<<<<<< HEAD
 scipy
 python-dotenv
+=======
+>>>>>>> 164b9f991110a914acc029a0615f2fd8a5f5a095
