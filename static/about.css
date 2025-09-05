@@ -233,6 +233,63 @@
 .btn:hover {
   background: #2980b9;
 }
+/* Project Card Styles */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tech-stack span {
+  background: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.project-links {
+  display: flex;
+  gap: 10px;
+}
+
+.project-links .btn {
+  background: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.project-links .btn-dashboard {
+  background: #2ecc71;
+}
+
+.project-links .btn:hover,
+.project-links .btn-dashboard:hover {
+  opacity: 0.9;
+}
 
 /* ---------- EDUCATION (Timeline style) ---------- */
 .timeline {
