@@ -1,9 +1,7 @@
-Flask
+Flask==3.0.3
 gunicorn
 numpy
-python = "^3.11"
-flask = "3.0.3"
-pandas = "2.2.2"
+pandas==2.2.2
 matplotlib
 seaborn
 scikit-learn
