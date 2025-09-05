@@ -231,17 +231,24 @@
 /* ---------- PROJECTS ---------- */
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
   gap: 25px;
+  align-items: start;
+  justify-content: start;
 }
-
 .card {
   background: #ffffff;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
+  min-height: 210px;
+
+  display: flex;               /* Make it a flexbox */
+  flex-direction: column;      /* Stack children vertically */
+  justify-content: space-between; /* Push button to bottom */
 }
+
 
 .card:hover {
   transform: translateY(-6px);
@@ -255,14 +262,15 @@
 
 .btn {
   display: inline-block;
-  margin-top: 12px;
   padding: 8px 16px;
   background: #3498db;
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.3s;
+  align-self: flex-start; /* Keep it aligned left */
 }
+
 
 .btn:hover {
   background: #2980b9;

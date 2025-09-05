@@ -17,13 +17,9 @@ venv/
 
 
 
-# Models
-models/
 
 
 
-# Reports
-reports/
 
 # OS files
 .DS_Store

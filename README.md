@@ -20,7 +20,7 @@ screenshots/ # App & dashboard previews
 
 ## ⚙️ Installation
 ```bash
-git clone https://github.com/<your-username>/churn-prediction-dashboard.git
+git clone https://github.com/OverStarData/customer-churn-analytics.git
 cd churn-prediction-dashboard
 pip install -r requirements.txt
 python app.py
@@ -35,3 +35,11 @@ Logistic Regression
 Random Forest (Tuned)
 
 Gradient Boosting
+
+👨‍💻 Author
+
+Mahmoud Kamal
+
+GitHub
+
+LinkedIn
