@@ -9,4 +9,5 @@ joblib
 scipy
 python-dotenv
 xgboost
-notebook
+notebook==7.4.5
+
