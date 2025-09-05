@@ -6,6 +6,3 @@ matplotlib
 seaborn
 scikit-learn
 joblib
-python-dotenv
-notebook==7.4.5
-
