@@ -15,7 +15,7 @@
     />
   </head>
   <body>
-    <!-- Navigation Bar -->
+ <!-- Navigation Bar -->
     <nav class="navbar">
       <div class="nav-container">
         <h1 class="logo">ChurnPredict</h1>
@@ -28,11 +28,24 @@
         <ul class="nav-links">
           <li><a href="/" class="">Home</a></li>
           <li><a href="/dataset">Explore Data</a></li>
-          <li><a href="/about">About</a></li>
+          <li>
+            <a
+              href="https://public.tableau.com/app/profile/mahmoud.mohamed2232/viz/Customer_Churn_17563566114270/ChurnDashboard"
+              target="_blank"
+              >Dashboard</a
+            >
+          </li>
+  <li>
+            <a
+              href="https://github.com/OverStarData/customer-churn-analytics/tree/main"
+              target="_blank"
+              >GitHub Code</a
+            >
+          </li>
+          <li><a href="/about" class="active">About</a></li>
         </ul>
       </div>
     </nav>
-
     <div class="page-container">
       <div class="result-card">
         {% if prediction %}

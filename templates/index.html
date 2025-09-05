@@ -13,31 +13,48 @@
       href="{{ url_for('static', filename='style.css') }}"
     />
 
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="nav-container">
-    <h1 class="logo">ChurnPredict</h1>
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="logo">ChurnPredict</h1>
 
-    <!-- Mobile toggle button -->
-    <button class="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
+        <!-- Mobile toggle button -->
+        <button class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
 
-    <ul class="nav-links">
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/dataset" >Explore Data</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </div>
-</nav>
+        <ul class="nav-links">
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/dataset">Explore Data</a></li>
+          <li>
+            <a
+              href="https://public.tableau.com/app/profile/mahmoud.mohamed2232/viz/Customer_Churn_17563566114270/ChurnDashboard"
+              target="_blank"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/OverStarData/customer-churn-analytics/tree/main"
+              target="_blank"
+              >GitHub Code</a
+            >
+          </li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <header class="hero">
       <div class="hero-content">
-        <h2>🔮 Customer Churn Prediction</h2>
+        <h2>Customer Churn Prediction</h2>
         <p>
           Enter customer details to predict whether they are likely to churn.
           This tool helps businesses improve retention strategies and reduce
@@ -237,7 +254,7 @@
         </div>
         <!-- Button -->
         <div class="full-width">
-          <button type="submit" class="predict-btn">🔍 Predict Churn</button>
+          <button type="submit" class="predict-btn">Predict Churn</button>
         </div>
 
         <!-- Error Message -->
@@ -246,37 +263,44 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>© 2025 Mahmoud Kamal | Built with ❤️ and Data</p>
-      <div class="socials">
-        <a href="https://github.com/OverStarData" target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a
-          href="https://www.linkedin.com/in/mahmoud-kamal-14208136b/"
-          target="_blank"
-          ><i class="fab fa-linkedin"></i
-        ></a>
+      <div class="footer-container">
+        <p>© 2025 Mahmoud Kamal | Built with Data and Analytics</p>
+        <div class="socials">
+          <a
+            href="https://github.com/OverStarData"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mahmoud-kamal-14208136b/"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
     </footer>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-    const errorSection = document.getElementById("error-section");
-    if (errorSection) {
-        // Smooth scroll to the error
-        errorSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-});
+        const errorSection = document.getElementById("error-section");
+        if (errorSection) {
+          // Smooth scroll to the error
+          errorSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
 
-    toggleBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-  });
-
+        toggleBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      });
     </script>
   </body>
 </html>
