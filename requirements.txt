@@ -8,15 +8,4 @@ scikit-learn
 joblib
 scipy
 python-dotenv
-
-
-matplotlib
-seaborn
-scikit-learn
-joblib
-scipy
-python-dotenv
-
 xgboost
-notebook
-
