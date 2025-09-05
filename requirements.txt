@@ -4,7 +4,7 @@ numpy>=2.1
 pandas>=2.2.3
 matplotlib
 seaborn
-scikit-learn
+scikit-learn==1.5.1
 joblib
 scipy
 python-dotenv
