@@ -68,7 +68,6 @@ Random Forest (Tuned)
 
 Gradient Boosting
 
-<<<<<<< HEAD
 👨‍💻 Author
 
 Mahmoud Kamal
