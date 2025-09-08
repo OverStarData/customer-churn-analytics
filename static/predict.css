@@ -79,6 +79,9 @@ body {
 .nav-links li a.active::after {
   width: 100%;
 }
+.menu-toggle{
+  display:none;
+}
 /* Mobile Nav */
 @media (max-width: 768px) {
   .menu-toggle {
